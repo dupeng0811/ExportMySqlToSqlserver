@@ -9,4 +9,10 @@
     <PackageReference Include="SqlSugarCore" Version="5.0.2.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ebooklist_mobi.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

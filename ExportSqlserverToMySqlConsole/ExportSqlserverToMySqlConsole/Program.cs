@@ -19,22 +19,24 @@ namespace ExportSqlserverToMySqlConsole
             
             SqlSugarClient mySqlSugarClient = new SqlSugarClient(new ConnectionConfig()
             {
-                ConnectionString = "server=localhost;port=3307;uid=ebooklist_mobi;pwd=aGcR91wKJZeum21i;database=ebooklist_mobi",
-                DbType = DbType.MySql,
+                ConnectionString = "Data Source=ebooklist_mobi.db;Cache=Shared;",
+                DbType = DbType.Sqlite,
                 IsAutoCloseConnection = true
             });
 
 
-            /*List<Books> booksList = sqlserverSugarClient.Queryable<Books>().ToList();
+            List<Books> booksList = sqlserverSugarClient.Queryable<Books>().ToList();
             foreach (Books books in booksList)
             {
+                books.Introduction = null;
                 Console.WriteLine(books.Name);
                 mySqlSugarClient.Insertable<Books>(books).ExecuteCommand();
-            }*/
+            }
 
             List<BookResources> bookResourcesList = sqlserverSugarClient.Queryable<BookResources>().ToList();
             foreach (BookResources resources in bookResourcesList)
             {
+                resources.PhysicalPath = null;
                 Console.WriteLine(resources.FileName +" BookId="+resources.BookId);
                 mySqlSugarClient.Insertable<BookResources>(resources).ExecuteCommand();
             }
